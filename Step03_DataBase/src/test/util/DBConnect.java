@@ -15,7 +15,7 @@ public class DBConnect {
 			//접속할 oracle DB 정보 구성
 			String url="jdbc:oracle:thin:@localhost:1521:xe";
 			//Connection 객체의 참조값 얻어오기
-			conn=DriverManager.getConnection(url,"scott","tiger");
+			conn=DriverManager.getConnection(url,"admin","admin");
 			System.out.println("Oracle DB 접속 성공!");
 		}catch(ClassNotFoundException cne){
 			cne.printStackTrace();
