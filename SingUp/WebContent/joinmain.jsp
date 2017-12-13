@@ -22,7 +22,7 @@
 <TR>
 <TD WIDTH="40%" ALIGN="left">이름</TD>
 <TD width="60%" ALIGN="left">
-<INPUT TYPE="text" size="15" Maxlength="10" name="usernm">
+<INPUT TYPE="text" size="15" Maxlength="10" name="usernm" value='aaaa'>
 </TD>
 </TR>
 

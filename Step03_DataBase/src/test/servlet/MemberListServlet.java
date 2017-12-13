@@ -49,6 +49,7 @@ public class MemberListServlet extends HttpServlet{
 	      pw.println("<th>이름</th>");
 	      pw.println("<th>주소</th>");
 	      pw.println("<th>삭제</th>");
+	      pw.println("<th>수정</th>");
 	      pw.println("</tr>");
 	      pw.println("</thead>");
 	      pw.println("<tbody>");
@@ -59,6 +60,7 @@ public class MemberListServlet extends HttpServlet{
 	         pw.println("<td>" + tmp.getName() + "</td>");
 	         pw.println("<td>" + tmp.getAddr() + "</td>");
 	         pw.println("<td><a href='delete?num=" + tmp.getNum() + "'>삭제</a></td>");
+	         pw.println("<td><a href='updateform?num=" + tmp.getNum() + "'>수정</a></td>");
 	         pw.println("</tr>");
 	      }
 	      pw.println("</tbody>");

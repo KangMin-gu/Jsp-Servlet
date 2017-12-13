@@ -4,16 +4,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import test.dao.MemberDao;
 import test.dto.MemberDto;
-
+@WebServlet("/member/insert")
 public class MemberInsertServlet extends HttpServlet{
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		//폼 전송되는 회원 정보를 읽어와서
 		
 		//한글 인코딩 설정
@@ -28,6 +30,11 @@ public class MemberInsertServlet extends HttpServlet{
 		//응답한다.
 		//응답 인코딩 설정
 		//클라이언트에게 문자열을 출력할수 있는 객체 얻어오기
+		//응답 인코딩 설정
+	     response.setCharacterEncoding("utf-8");
+
+	    //응답 컨텐츠 설정
+	    response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
 		pw.println("<!doctype html>");
 		pw.println("<html>");
@@ -37,7 +44,7 @@ public class MemberInsertServlet extends HttpServlet{
 		pw.println("</head>");
 		pw.println("<body>");
 		pw.println("<p>회원정보를 추가 했습니다.</p>");
-		pw.println("<a href='list'>목록보기</a>");
+		pw.println("<a href='List'>목록보기</a>");
 		pw.println("</body>");
 		pw.println("</html>");
 	}
