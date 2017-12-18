@@ -5,10 +5,9 @@
 	pageEncoding="UTF-8"%>
 <%
 //회원목록을 얻어온다.
-List<MemberDto> list = MemberDao.getInstance().getList();
-
+request.setCharacterEncoding("utf-8");	
+ List<MemberDto> list = MemberDao.getInstance().getList();
 %>
-	
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +15,7 @@ List<MemberDto> list = MemberDao.getInstance().getList();
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="insertform.jsp">추가하기</a>
 	<table>
 		<thead>
 			<tr>
@@ -24,16 +24,18 @@ List<MemberDto> list = MemberDao.getInstance().getList();
 				<th>주소</th>
 			</tr>
 		</thead>
-		<
 		<tbody>
 			<%for(MemberDto tmp: list) { %>
 			<tr>
-				<td><%tmp.getNum();%></td>
-				<td><%tmp.getName();%></td>
-				<td><%tmp.getAddr();%></td>
+				<td><%=tmp.getNum()%></td>
+				<td><%=tmp.getName()%></td>
+				<td><%=tmp.getAddr()%></td>
+				<td><a href='update.jsp?num=<%= tmp.getNum() %>'>수정</a></td>
+				<td><a href='delete.jsp?num=<%= tmp.getNum() %>'>삭제</a></td>
 			</tr>
-			<%}%>
+				<%}%>
 		</tbody>
 	</table>
+	
 </body>
 </html>
