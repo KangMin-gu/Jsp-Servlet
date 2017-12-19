@@ -4,17 +4,17 @@ public class UsersDto {
 	private String id;
 	private String pwd;
 	private String email;
-	private String regdae;
+	private String regdate;
 	
 	public UsersDto() {
 		
 	}
 	
-	public UsersDto(String id, String pwd, String email, String regdae) {
+	public UsersDto(String id, String pwd, String email, String regdate) {
 		this.id = id;
 		this.pwd = pwd;
 		this.email = email;
-		this.regdae = regdae;
+		this.regdate = regdate;
 	
 	}
 
@@ -42,12 +42,12 @@ public class UsersDto {
 		this.email = email;
 	}
 
-	public String getRegdae() {
-		return regdae;
+	public String getRegdate() {
+		return regdate;
 	}
 
-	public void setRegdae(String regdae) {
-		this.regdae = regdae;
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
 	
 	

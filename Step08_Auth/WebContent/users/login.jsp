@@ -19,16 +19,19 @@
 	dto.setPwd(pwd);
 	//2. 유효한 정보인지 확인해서 
 	boolean isValid = UsersDao.getInstance().isValid(dto);
-	//3. 응답한다.
+	//3. 로그인 성공후 이동할 경로
+	String url = request.getParameter("url");
+	//4.응답한다.
 %>
 <%if(isValid){
 	//세션에 로그인 정보를 답는다.
 	session.setAttribute("id", id);
 	%>
 	<p><strong><%=id %></strong>회원님 로그인 되었습니다.</p>
+	<a href="<%=url%>">확인</a>
 	<% }else{ %>
 	<p>아이디 혹은 비밀 번호가 틀려요</p>
-	<a href="login_form.jsp">로그인 포므올 돌아가기</a>
+	<a href="login_form.jsp?url=<%=url%>">로그인 폼으로 돌아가기</a>
 <%}%>
 </body>
 </html>

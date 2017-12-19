@@ -5,24 +5,84 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.sun.org.apache.bcel.internal.generic.GETFIELD;
-
 import test.users.dto.UsersDto;
 import test.util.DbcpBean;
 
 public class UsersDao {
 	private static UsersDao dao;
-	
-	private UsersDao() {
-		
-	}
+	private UsersDao() {}
 	
 	public static UsersDao getInstance() {
 		if(dao==null) {
 			dao=new UsersDao();
 		}
-	return dao;
+		return dao;
 	}
+	
+	public boolean update(UsersDto dto){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		boolean isSuccess = false;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "update users set pwd=?, email=? where id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getPwd());
+			pstmt.setString(2, dto.getEmail());
+			pstmt.setString(3, dto.getId());
+			//sql 문 수행하고 결과셋 받아오기 
+			int flag = pstmt.executeUpdate();
+			if (flag > 0) {
+				isSuccess = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}return isSuccess;
+	}
+	
+	public UsersDto getData(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		UsersDto dto=new UsersDto();
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "SELECT pwd,email,regdate FROM users "
+					+ " WHERE id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			//sql 문 수행하고 결과셋 받아오기 
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				dto.setId(id);
+				dto.setPwd(rs.getString("pwd"));
+				dto.setEmail(rs.getString("email"));
+				dto.setRegdate(rs.getString("regdate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return dto;
+	}
+	
 	
 	//아이디 비밀번호가 유효한지 여부를 리턴하는 메소드
 	public boolean isValid(UsersDto dto){
@@ -61,26 +121,27 @@ public class UsersDao {
 		return isValid;
 	}//isValid()
 	
+	
+	// 회원정보를 저장하는 메소드 
 	public boolean insert(UsersDto dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		boolean isSuccess = false;
 		try {
+			//Connection 객체의 참조값 얻어오기
 			conn = new DbcpBean().getConn();
-			String sql = "insert into users"
-					+ "(id, pwd, email, regdate)"
-					+ "values (?,?,?,sysdate)";
+			String sql = "INSERT INTO users (id,pwd,email,regdate)"
+					+ " VALUES(?,?,?,SYSDATE)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getId());
 			pstmt.setString(2, dto.getPwd());
 			pstmt.setString(3, dto.getEmail());
-			
-			//sql 문 수행하고 결과셋 받아오기 
+		
+			//sql 문 수행하기
 			int flag = pstmt.executeUpdate();
 			if (flag > 0) {
 				isSuccess = true;
 			}
-	
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -94,5 +155,14 @@ public class UsersDao {
 		}
 		return isSuccess;
 	}
-	
 }
+
+
+
+
+
+
+
+
+
+
