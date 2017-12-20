@@ -22,6 +22,7 @@
 	//3. 로그인 성공후 이동할 경로
 	String url = request.getParameter("url");
 	//4.응답한다.
+	System.out.println(url);
 %>
 <%if(isValid){
 	//세션에 로그인 정보를 답는다.
@@ -32,6 +33,11 @@
 	<% }else{ %>
 	<p>아이디 혹은 비밀 번호가 틀려요</p>
 	<a href="login_form.jsp?url=<%=url%>">로그인 폼으로 돌아가기</a>
+	<!-- url web.xml에 index.jsp 응답하게 설정해놔서. url값은  /Step08_Auth/ 로나온다.-->
 <%}%>
+<!-- ? 뒤는 키와 value 값 -->
+<script>
+
+</script>
 </body>
 </html>

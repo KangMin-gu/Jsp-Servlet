@@ -19,6 +19,36 @@ public class UsersDao {
 		return dao;
 	}
 	
+	//회원 정보를 삭제하는 메소드
+	public boolean delete(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		boolean isSuccess = false;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "delete from users where id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			//sql 문 수행하고 결과셋 받아오기 
+			int flag = pstmt.executeUpdate();
+			if(flag>0) {
+				isSuccess = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		
+		return isSuccess;
+	}
+	//회원 정보를 수정하는 메소드 
 	public boolean update(UsersDto dto){
 		Connection conn = null;
 		PreparedStatement pstmt = null;

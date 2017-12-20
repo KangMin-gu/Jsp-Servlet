@@ -48,6 +48,16 @@
 	</tbody>
 </table>
 <a href="updateform.jsp">가입정보 수정</a>
+<a href="javascript:deleteConfirm()">회원탈퇴</a>
+<script>
+	function deleteConfirm(){
+		var isDelete = confirm("정말 탈퇴 하시겠습니까?"); 
+		//confirm 은 확인누르면은 true 취소는 false return된다.
+		if(isDelete){
+			location.href="delete.jsp";
+		}
+	}
+</script>
 </body>
 </html>
 

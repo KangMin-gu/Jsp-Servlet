@@ -20,6 +20,7 @@
 <ul>
 	<li><a href="users/signup_form.jsp">회원가입</a></li>
 	<li><a href="users/login_form.jsp?url=${pageContext.request.contextPath}/">로그인</a></li>
+	<!--  로그인하고나서 들고갈 url ${pageContext.request.contextPath}/ -->
 </ul>
 </body>
 </html>
