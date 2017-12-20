@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *  - javax.servlet.Filter 인터페이스를 구현해서 만든다.
  */
 
-@WebFilter("/users/private/*") //특정 경로(private 하위)에대해서 접속전에 로그인 했는지 안했는지 확인. 
+@WebFilter({"/users/private/*","/member/*"}) //특정 경로(private 하위)에대해서 접속전에 로그인 했는지 안했는지 확인. 
 public class LoginFilter implements Filter{
 
 	@Override
@@ -39,6 +39,7 @@ public class LoginFilter implements Filter{
 		HttpSession session=request.getSession();
 		//Context 경로 얻어오기
 		String cPath=request.getContextPath();
+		System.out.println(cPath);
 		//원래 요청 uri(url) 정보 얻어오기
 		String url=request.getRequestURI(); //<--원래 가려던 url 얻어오기
 		//session 에 로그인 정보가 있는지 여부를 확인해서
