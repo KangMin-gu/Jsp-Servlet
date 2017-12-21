@@ -9,7 +9,7 @@
 <body>
 <%
 	//result 객체에 담겨서 전달된 쿠키 목록을 읽어온다. 
-	Cookie[] cookies = request.getCookies();
+	Cookie[] cookies = request.getCookies(); //형태는 key:value , key:value 형태의 배열
 
 	String savedMsg ="";
 	if(cookies != null && cookies.length > 0){//쿠키가 존재한다면

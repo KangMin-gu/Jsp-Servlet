@@ -12,6 +12,7 @@
 	<li><a href="test.jsp">쿠키 테스트</a></li>
 	<li><a href="users/login_form.jsp">로그인 테스트</a></li>
 	<li><a href="popup/popup_test.jsp">팝업 테스트</a></li>
+	<li><a href="popup2/main.jsp">팝업 테스트2</a></li>
 </ul>
 </body>
 </html>

@@ -18,7 +18,7 @@
 		//쿠키 유지시간을 초단위로 지정한다.
 		cookie.setMaxAge(60); //60 , 60*60 하루
 		//응답할때 쿠키가 같이 응답되도록 요청 객체에 담는다.
-		response.addCookie(cookie);
+		response.addCookie(cookie); //쿠키를 심을때 쿠키는 배열의 형태로 response.addCookie(); 한다.
 	}
 	
 %>
