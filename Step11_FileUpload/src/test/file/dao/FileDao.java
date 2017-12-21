@@ -18,20 +18,21 @@ public class FileDao {
 		}
 		return dao;
 	}
-	//파일 정보를 삭제하는 메소드 delete()
-	
+	//파일 정보를 DB 에서 삭제하는 메소드
 	public boolean delete(int num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		boolean isSuccess = false;
 		try {
+			//Connection 객체의 참조값 얻어오기
 			conn = new DbcpBean().getConn();
-			String sql = "delete from board_data where num=?";
+			String sql = "DELETE FROM board_data "
+					+ "WHERE num=?";
 			pstmt = conn.prepareStatement(sql);
-			//sql 문 수행하고 결과셋 받아오기 
 			pstmt.setInt(1, num);
+			//sql 문 수행하기
 			int flag = pstmt.executeUpdate();
-			if(flag>0) {
+			if (flag > 0) {
 				isSuccess = true;
 			}
 		} catch (Exception e) {
@@ -47,6 +48,51 @@ public class FileDao {
 		}
 		return isSuccess;
 	}
+	
+	//다운로드할 파일의 정보를 리턴해주는 메소드
+	public FileDto getData(int num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// 파일 정보를 저장할 FileDto 
+		FileDto dto=null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "SELECT writer,title,orgFileName,"
+					+ "saveFileName,fileSize,regdate "
+					+ " FROM board_data "
+					+ " WHERE num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			//sql 문 수행하고 결과셋 받아오기 
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				dto=new FileDto();
+				dto.setNum(num);
+				dto.setWriter(rs.getString("writer"));
+				dto.setTitle(rs.getString("title"));
+				dto.setOrgFileName(rs.getString("orgFileName"));
+				dto.setSaveFileName(rs.getString("saveFileName"));
+				dto.setFileSize(rs.getLong("fileSize"));
+				dto.setRegdate(rs.getString("regdate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return dto;
+	}
+	
+	
 	//파일 정보를 저장하는 메소드 insert()
 	public boolean insert(FileDto dto) {
 		Connection conn = null;
@@ -56,7 +102,7 @@ public class FileDao {
 			//Connection 객체의 참조값 얻어오기
 			conn = new DbcpBean().getConn();
 			String sql = "INSERT INTO board_data "
-					+ " (num,writer,title,orgFileName,saveFileName,fileSize,regdage)"
+					+ " (num,writer,title,orgFileName,saveFileName,fileSize,regdate)"
 					+ " VALUES(board_data_seq.NEXTVAL,?,?,?,?,?,SYSDATE)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getWriter());

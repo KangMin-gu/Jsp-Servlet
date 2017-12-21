@@ -4,22 +4,22 @@ public class FileDto {
 	private int num;
 	private String writer;
 	private String title;
-	private String orgFileName; //원본파일명
+	private String orgFileName; //원본 파일명
 	private String saveFileName; //저장된 파일명
-	private long fileSize; //파일의 크기 byte 
+	private long fileSize; //파일의 크기 byte 는 큰 숫자 일수 있으므로
 	private String regdate;
 	
-	public FileDto() {
-		
-	}
-	
-	public FileDto(int num, String writer, String title, String orgFileName, String saveFileName, long fileSize, String regdate) {
+	public FileDto() {}
+
+	public FileDto(int num, String writer, String title, String orgFileName, String saveFileName, long fileSize,
+			String regdate) {
+		super();
 		this.num = num;
 		this.writer = writer;
 		this.title = title;
 		this.orgFileName = orgFileName;
-		this.saveFileName= saveFileName;
-		this.fileSize=fileSize;
+		this.saveFileName = saveFileName;
+		this.fileSize = fileSize;
 		this.regdate = regdate;
 	}
 
@@ -78,8 +78,6 @@ public class FileDto {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-
-
 	
 	
 }
