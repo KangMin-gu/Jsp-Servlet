@@ -29,7 +29,7 @@ public class MemberDao {
 		boolean isSuccess=false; //저장 성공 여부 
 		try {
 			conn=new DbcpBean().getConn();
-			String sql="UPDATE member "
+			String sql="UPDATE member2 "
 					+ "SET name=?,addr=? WHERE num=?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getName());
@@ -60,7 +60,7 @@ public class MemberDao {
 		MemberDto dto=null;
 		try {
 			conn=new DbcpBean().getConn();
-			String sql="SELECT name,addr FROM member "
+			String sql="SELECT name,addr FROM member2 "
 					+ "WHERE num=?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
@@ -91,7 +91,7 @@ public class MemberDao {
 		boolean isSuccess=false; //저장 성공 여부 
 		try {
 			conn=new DbcpBean().getConn();
-			String sql="INSERT INTO member (num,name,addr) "
+			String sql="INSERT INTO member2 (num,name,addr) "
 					+ "VALUES(member_seq.NEXTVAL, ?, ?)";
 			pstmt=conn.prepareStatement(sql);
 			// ? 에 추가할 회원정보 바인딩하기 
@@ -120,7 +120,7 @@ public class MemberDao {
 		boolean isSuccess=false; //삭제 성공 여부 
 		try {
 			conn=new DbcpBean().getConn();
-			String sql="DELETE FROM member WHERE num=?";
+			String sql="DELETE FROM member2 WHERE num=?";
 			pstmt=conn.prepareStatement(sql);
 			// 1번째 ? 에 삭제할 회원번호 바인딩하기
 			pstmt.setInt(1, num);
@@ -149,7 +149,7 @@ public class MemberDao {
 		List<MemberDto> list=new ArrayList<>();
 		try {
 			conn=new DbcpBean().getConn();
-			String sql="SELECT num,name,addr FROM member "
+			String sql="SELECT num,name,addr FROM member2 "
 					+ "ORDER BY num DESC";
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();

@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("*.do")
+@WebServlet("*.do") 
+// 모든 요청은 do 말고 다른 걸로 변경가능하다. do는 일반적으로쓰는것
+//ex) @WebServlet("*.arcon") .arcon으로 끝나는 요청처리는 전부처리하겠다.
 public class ActionServlet extends HttpServlet{
 	//. 을 포함한 요청 확장자의 길이 (.do 의 길이)
 	public static final int INCLUDE_EXTENSION_LENGTH=3;
@@ -39,14 +41,14 @@ public class ActionServlet extends HttpServlet{
 				return;
 			}
 			if(af.isRedirect()){//redirect 이동해야 한다면
-				//redirect 이동 시킨다.
-				response.sendRedirect(contextName+af.getPath());
-			}else{//forward 이동해야 한다면 
+				//redirect 이동 시킨다. //새로운경로로 나에게 새로운 요청을 다시해.라는 응답
+				response.sendRedirect(contextName+af.getPath()); //af. 응답경로
+			}else{//forward 이동해야 한다면 //jsp페이지에게 응답을 위임하는것.
 				RequestDispatcher rd=
 						request.getRequestDispatcher(af.getPath());
 				rd.forward(request, response);
 			}
-		}
+		}//.do로 끝나는 요청을 받아 비즈니스로직 처리를 하고 -> redirect or forward로 응답
 	}
 }
 
