@@ -6,6 +6,7 @@ import test.member.action.MemberInsertAction;
 import test.member.action.MemberInsertFormAction;
 import test.member.action.MemberListAction;
 import test.member.action.MemberUpdateAction;
+import test.member.action.MemberUpdateFormAction;
 
 public class UserActionFactory {
 	private static UserActionFactory factory;
@@ -35,6 +36,8 @@ public class UserActionFactory {
 		}else if (command.equals("/member/delete")) {
 			action = new MemberDeleteAction();
 		}else if (command.equals("/member/updateform")) {
+			action = new MemberUpdateFormAction();
+		}else if (command.equals("/member/update")) {
 			action = new MemberUpdateAction();
 		}
 		return action;

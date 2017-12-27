@@ -1,4 +1,4 @@
-package test.controller;
+ package test.controller;
 
 public class ActionForward {
 	//이동 경로 
