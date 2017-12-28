@@ -14,6 +14,8 @@
 	<li><a href="scope/test02.jsp">scope 테스트2</a></li>
 	<li><a href="param/test01.jsp?num=1&name=kimgura">param 테스트</a></li>
 	<li><a href="param/form.jsp">param 테스트2</a></li>
+	<li><a href="fortune.do">오늘의 운세보기</a></li>
+	<li><a href="info.do">회원 정보 보기</a></li>
 </ul>
 </body>
 </html>
