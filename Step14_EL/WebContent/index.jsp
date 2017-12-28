@@ -11,6 +11,9 @@
 <ul>
 	<li><a href="hello.jsp">Hello Expression Language</a></li>
 	<li><a href="scope/test01.jsp">scope 테스트1</a></li>
+	<li><a href="scope/test02.jsp">scope 테스트2</a></li>
+	<li><a href="param/test01.jsp?num=1&name=kimgura">param 테스트</a></li>
+	<li><a href="param/form.jsp">param 테스트2</a></li>
 </ul>
 </body>
 </html>
