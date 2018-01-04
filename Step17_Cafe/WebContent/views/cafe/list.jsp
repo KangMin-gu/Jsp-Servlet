@@ -40,7 +40,7 @@
 			<c:forEach var="tmp" items="${list }">
 				<tr>
 					<td>${tmp.num }</td>
-					<td><a href="detail.do?num=${tmp.num }">${tmp.title }</a></td>
+					<td><a href="detail.do?num=${tmp.num }&condition=${condition}&keyword=${keyword}">${tmp.title }</a></td>
 					<td>${tmp.writer }</td>
 					<td>${tmp.viewCount }</td>
 					<td>${tmp.regdate }</td>
@@ -51,7 +51,7 @@
 <!-- 페이징 처리에 관련된 UI -->
 <div class="page_display">
 	<c:choose>
-		<c:when test="${startPageNum ne 1 }">
+		<c:when test="${startPageNum ne 1 }"> <!--  시작페이지가 1이아니면 이전없애기 -->
 			<a href="list.do?pageNum=${startPageNum-1 }">[ 이전 ]</a>
 		</c:when>
 		<c:otherwise>
@@ -80,7 +80,7 @@
 	</c:choose>
 </div>
 	
-<!-- 검색어 관련 form -->
+<!-- 검색어 관련 form  parameter condition(titlecontent, title, writer) , keyword가 넘어감-->
 <form action="list.do" method="post">
 	<label for="condition">검색조건</label>
 	<select name="condition" id="condition">

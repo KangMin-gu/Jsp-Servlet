@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)file:///C:/ncs09/sublime_work/bootstrap/%EA%B3%BC%EC%A0%9C.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>에이콘여행사</title>
+<!-- <link rel="stylesheet" href="css/bootstrap.css"/> -->
+<link rel="stylesheet" href="./에이콘여행사_files/cosmo.css">
+<script src="./에이콘여행사_files/holder.js.다운로드"></script>
+<style>
+	/* scroll 을 감시할 요소의 position 속성의 value 를 relative 라고 지정한다. */
+	body{
+		padding-top: 40px;
+		position: relative;
+	}
+	.spacer{
+		height: 300px;
+		background-color: #cecece;
+	}
+	#myCarousel h1 {
+		top: 50%;
+	}
+
+	#navbar-example{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		opacity: 0.8;
+		z-index: 99999;
+	}
+	section{
+		position: relative;
+		padding-bottom: 100px;
+	}
+
+	#section2 .col {
+		padding: 10px;
+		overflow: hidden;
+		position: relative;
+		text-align: center;
+	}
+
+	#section2 .col img {
+		width: 300px;
+		overflow: hidden;
+		margin-bottom: 10px;
+		border-radius: 10px;
+	} 
+	
+	#section2 .col button {	
+		border-radius: 5px;
+		opacity: 0.7;
+	} 
+
+	#section3{
+		position: relative;
+/*		background-color: #000;*/
+
+	}
+
+	#section3::after {
+	  content: "";
+	  background: url("images/cy-3.jpg") no-repeat;
+	  opacity: 0.5;
+	  top: 0;
+	  left: 0;
+	  bottom: 0;
+	  right: 0;
+	  position: absolute;
+	  z-index: -1;   
+	}
+
+	#section3 table{
+		position: absolute;
+		width: 80%;
+		top: 165px;
+		left: 0;
+		right: 0;
+		margin: auto;
+
+	}
+
+
+</style>
+</head>
+<!-- 스크롤을 감시할 요소에 data- 속성을 추가 한다. -->
+<body data-offset="60" data-spy="scroll" data-target="#navbar-example">
+	<div id="navbar-example">
+		<!-- ul 에 nav 클래스 추가 -->
+		<ul id="myNav" class="nav nav-pills">
+			<li class="active"><a href="file:///C:/ncs09/sublime_work/bootstrap/%EA%B3%BC%EC%A0%9C.html#section1">Home</a></li>
+			<li class=""><a href="file:///C:/ncs09/sublime_work/bootstrap/%EA%B3%BC%EC%A0%9C.html#section2">Package</a></li>
+			<li class=""><a href="file:///C:/ncs09/sublime_work/bootstrap/%EA%B3%BC%EC%A0%9C.html#section3">Review</a></li>
+		</ul>	
+	</div>
+	<section id="section1">
+
+		<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+		<!-- Carousel 하단의 동그란 nav 요소  -->
+			<ol class="carousel-indicators">
+				<!-- data-target="Carousel 전체의 선택자" 
+				data-slide-to="컨텐츠 인덱스" -->
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1" class=""></li>
+				<li data-target="#myCarousel" data-slide-to="2" class=""></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="./에이콘여행사_files/cy-1.jpg">
+					<div class="carousel-caption">
+						<h1>하늘로 떠나는 여행</h1>
+						<p>열기구를 타고 하늘로 떠나요!</p>
+					</div>
+				</div>
+				<div class="item">
+					<img src="./에이콘여행사_files/cy-2.jpg">
+					<div class="carousel-caption">
+						<h1>호수로 떠나는 여행</h1>
+						<p>신비로운 호수로 떠나요!</p>
+					</div>
+				</div>
+				<div class="item">
+					<img src="./에이콘여행사_files/cy-3.jpg">
+					<div class="carousel-caption">
+						<h1>도시로 떠나는 여행</h1>
+						<p>도시의 멋진 야경을 즐겨봐요!</p>
+					</div>
+				</div>
+			</div>
+			<!-- 이전, 다음 control UI -->
+			<a href="file:///C:/ncs09/sublime_work/bootstrap/%EA%B3%BC%EC%A0%9C.html#myCarousel" class="left carousel-control" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">이전</span>
+			</a>
+			<a href="file:///C:/ncs09/sublime_work/bootstrap/%EA%B3%BC%EC%A0%9C.html#myCarousel" class="right carousel-control" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">다음</span>
+			</a>
+		</div>
+	</section>
+	<!-- end of section1 -->
+
+	<section id="section2">
+		<div class="container">
+			<h2>Package</h2>
+			<div class="row">
+				<div class="col col-xs-6 col-md-4">
+					<img src="./에이콘여행사_files/travel1.jpg">
+					<button class="btn btn-info btn-sm">보기 <span class="glyphicon glyphicon-search"></span></button>
+					<button class="btn btn-success btn-sm">찜 <span class="glyphicon glyphicon-heart-empty"></span></button>
+				</div>
+				<div class="col col-xs-6 col-md-4">
+					<img src="./에이콘여행사_files/travel2.jpg">
+					<button class="btn btn-info btn-sm">보기 <span class="glyphicon glyphicon-search"></span></button>
+					<button class="btn btn-success btn-sm">찜 <span class="glyphicon glyphicon-heart-empty"></span></button>
+				</div>
+				<div class="col col-xs-6 col-md-4">
+					<img src="./에이콘여행사_files/travel3.jpg">
+					<button class="btn btn-info btn-sm">보기 <span class="glyphicon glyphicon-search"></span></button>
+					<button class="btn btn-success btn-sm">찜 <span class="glyphicon glyphicon-heart-empty"></span></button>
+				</div>
+				<div class="col col-xs-6 col-md-4">
+					<img src="./에이콘여행사_files/travel4.jpg">
+					<button class="btn btn-info btn-sm">보기 <span class="glyphicon glyphicon-search"></span></button>
+					<button class="btn btn-success btn-sm">찜 <span class="glyphicon glyphicon-heart-empty"></span></button>
+				</div>
+				<div class="col col-xs-6 col-md-4">
+					<img src="./에이콘여행사_files/travel5.jpg">
+					<button class="btn btn-info btn-sm">보기 <span class="glyphicon glyphicon-search"></span></button>
+					<button class="btn btn-success btn-sm">찜 <span class="glyphicon glyphicon-heart-empty"></span></button>
+				</div>
+				<div class="col col-xs-6 col-md-4">
+					<img src="./에이콘여행사_files/travel6.jpg">
+					<button class="btn btn-info btn-sm">보기 <span class="glyphicon glyphicon-search"></span></button>
+					<button class="btn btn-success btn-sm">찜 <span class="glyphicon glyphicon-heart-empty"></span></button>
+				</div>
+				<div class="col col-xs-6 col-md-4">
+					<img src="./에이콘여행사_files/travel7.jpg">
+					<button class="btn btn-info btn-sm">보기 <span class="glyphicon glyphicon-search"></span></button>
+					<button class="btn btn-success btn-sm">찜 <span class="glyphicon glyphicon-heart-empty"></span></button>
+				</div>
+				<div class="col col-xs-6 col-md-4">
+					<img src="./에이콘여행사_files/travel8.jpg">
+					<button class="btn btn-info btn-sm">보기 <span class="glyphicon glyphicon-search"></span></button>
+					<button class="btn btn-success btn-sm">찜 <span class="glyphicon glyphicon-heart-empty"></span></button>
+				</div>		
+			</div>
+		</div>
+	</section>
+	<!-- end of section2 -->
+
+	<section id="section3" style="height: 1000px">
+		<div class="container">
+			<h2>Review</h2>
+			<table class="table table-hover">
+		        <thead>
+		            <tr>
+		                <th>번호</th>
+		                <th>고객명</th>
+		                <th>게시글</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr>
+		                <td>1</td>
+		                <td>김구*</td>
+		                <td>브라질 여행 다녀왔....</td>
+		            </tr>
+		            <tr>
+		                <td>2</td>
+		                <td>김가*</td>
+		                <td>작년 여름 가족과 시...</td>
+		            </tr>
+		            <tr>
+		                <td>3</td>
+		                <td>원*이</td>
+		                <td>가깝지만 먼 나라 일...</td>
+		            </tr>
+		        </tbody>
+		    </table>			
+		</div>
+		
+	</section>
+	<!-- end of section3 -->
+ <footer>
+ 	<div class="container spacer">
+ 		contact us <span class="glyphicon glyphicon-earphone"></span>
+ 	</div>
+
+ </footer>
+<script src="./에이콘여행사_files/jquery-3.2.1.js.다운로드"></script>
+<script src="./에이콘여행사_files/bootstrap.js.다운로드"></script>	
+<script src="./에이콘여행사_files/jquery.smooth-scroll.js.다운로드"></script> 
+<script>
+	$("#myNav a").smoothScroll({
+		//스크롤이 50px 덜 되어서 각 메뉴의 타이틀이 보이도록 
+		offset: -50,
+		easing: "swing",
+		//default 는 400
+		speed: 600,
+	});
+
+	var wWidth = $(window).width();
+
+	if(wWidth < 978){
+		$("#section2 button").addClass("btn-sm");
+	} else {
+		$("#section2 button").removeClass("btn-sm");
+	}
+
+	$(window).resize(function(){
+		
+		var wWidth = $(window).width();
+
+		if(wWidth < 978){
+			$("#section2 button").addClass("btn-sm");
+		} else {
+			$("#section2 button").removeClass("btn-sm");
+		}
+	});
+
+	
+</script>
+
+</body></html>

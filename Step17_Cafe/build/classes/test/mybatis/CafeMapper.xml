@@ -4,55 +4,97 @@
 	<!-- 자주 사용하는 sql 문을 미리 정의 해 놓기 -->
 	<sql id="cafeColumns">
 		num,writer,title,content,viewCount,
-		TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
+		TO_CHAR(regdate,
+		'YY.MM.DD HH24:MI') AS regdate
 	</sql>
-
 	<select id="getList" resultType="test.cafe.dto.CafeDto"
 		parameterType="test.cafe.dto.CafeDto">
 		SELECT *
 		FROM (SELECT result1.*,ROWNUM rnum
-			  FROM (SELECT <include refid="cafeColumns"/>
-			  		FROM board_cafe
-			  		ORDER BY num DESC) result1
-			  )
+		FROM (SELECT
+		<include refid="cafeColumns" />
+		FROM board_cafe
+		<where>
+			<if test="writer != null">
+				OR writer LIKE '%'||#{writer}||'%'
+			</if>
+			<if test="title != null">
+				OR title LIKE '%'||#{title}||'%'
+			</if>
+			<if test="content != null">
+				OR content LIKE '%'||#{content}||'%'
+			</if>
+		</where>
+		ORDER BY num DESC) result1
+		)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
-	
+
 	<insert id="insert" parameterType="test.cafe.dto.CafeDto">
 		INSERT INTO board_cafe
-		(num, writer, title, content, viewCount, regdate)
-		VALUES(board_cafe_seq.NEXTVAL, 
+		(num,
+		writer, title, content, viewCount, regdate)
+		VALUES(board_cafe_seq.NEXTVAL,
 		#{writer}, #{title}, #{content}, #{viewCount}, SYSDATE)
 	</insert>
-	
+
 	<update id="increaseViewCount" parameterType="int">
 		UPDATE board_cafe
 		SET viewCount=viewCount+1
 		WHERE num=#{num}
 	</update>
-	
-	<select id="getData" parameterType="int"
-	 	resultType="test.cafe.dto.CafeDto">
-	 	SELECT <include refid="cafeColumns"/>
-	 	FROM board_cafe
-	 	WHERE num=#{num}
-	 </select>
-	 
-	 <delete id="delete" parameterType="int">
-	 	DELETE FROM board_cafe
-	 	WHERE num=#{num}
-	 </delete>
-	 
-	 <update id="update" parameterType="test.cafe.dto.CafeDto">
-	 	UPDATE board_cafe
-	 	SET title=#{title},content=#{content}
-	 	WHERE num=#{num}
-	 </update>
-	 
-	 <select id="getCount" resultType="int">
-	 	SELECT NVL(MAX(ROWNUM), 0) 
-	 	FROM board_cafe
-	 </select>
+
+	<select id="getData" parameterType="test.cafe.dto.CafeDto" resultType="test.cafe.dto.CafeDto">
+	SELECT result1.* 
+	FROM
+		(SELECT <include refid="cafeColumns" />,
+		LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum, <!--LEAD 이전글 문자열인경우 0 대신 '이전글 없음' -->
+		LAG(num, 1, 0) OVER(ORDER BY num DESC) prevNum <!-- LAG 다음글 -->
+		FROM board_cafe
+		<where>
+			<if test="writer != null">
+				OR writer LIKE '%'||#{writer}||'%'
+			</if>
+			<if test="title != null">
+				OR title LIKE '%'||#{title}||'%'
+			</if>
+			<if test="content != null">
+				OR content LIKE '%'||#{content}||'%'
+			</if>
+		</where>		
+		ORDER BY num DESC ) result1
+	WHERE num =#{num}
+	</select>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM board_cafe
+		WHERE num=#{num}
+	</delete>
+
+	<update id="update" parameterType="test.cafe.dto.CafeDto">
+		UPDATE board_cafe
+		SET title=#{title},content=#{content}
+		WHERE num=#{num}
+	</update>
+
+
+	<select id="getCount" resultType="int" parameterType="test.cafe.dto.CafeDto">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM board_cafe
+		<!-- mybatis 가 where절을 만들어준것. 키워드가 없으면 전부 null 검색 키워드가 있으면 해당 parameter 
+			생성 나머지는 null 동적으로만들어줌 -->
+		<where>
+			<if test="writer != null">
+				OR writer LIKE '%'||#{writer}||'%'
+			</if>
+			<if test="title != null">
+				OR title LIKE '%'||#{title}||'%'
+			</if>
+			<if test="content != null">
+				OR content LIKE '%'||#{content}||'%'
+			</if>
+		</where>
+	</select>
 </mapper>
 
 
