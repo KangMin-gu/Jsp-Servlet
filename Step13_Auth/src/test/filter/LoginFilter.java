@@ -39,7 +39,7 @@ public class LoginFilter implements Filter{
 		//Context 경로 얻어오기
 		String cPath=request.getContextPath();
 		//원래 요청 uri(url) 정보 얻어오기
-		String url=request.getRequestURI();
+		String url=request.getRequestURI(); //프로젝트 경로와 파일경로를 얻어옴 localhost:8888/Step13_Auth/
 		//session 에 로그인 정보가 있는지 여부를 확인해서
 		if(session.getAttribute("id")==null){
 			//로그인 페이지의 경로 구성 
