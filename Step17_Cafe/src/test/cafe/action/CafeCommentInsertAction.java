@@ -21,7 +21,7 @@ public class CafeCommentInsertAction extends Action{
 				//덧글 내에서의 그룹번호를 읽어온다. 
 				//null 이면 원글에 대한 덧글이고 아니면 덧글에 대한 덧글이다.
 				String comment_group=request.getParameter("comment_group");
-				//저장할 덧글 번호를 미리 읽어온다.
+				//저장할 덧글 번호를 미리 읽어온다. 미리알아야지comment_group번호부여가능
 				int seq = CafeCommentDao.getInstance().getSequence();
 				
 		//2. 새 덧글 정보를 dto 에 담고 

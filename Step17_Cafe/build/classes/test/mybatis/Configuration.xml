@@ -21,21 +21,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<mapper resource="test/mybatis/UsersMapper.xml"/>
 		<mapper resource="test/mybatis/CafeMapper.xml"/>
-		<mapper resource="test/mybatis/CafeCommentMapper.xml"></mapper>
+		<mapper resource="test/mybatis/FileMapper.xml"/>
+		<mapper resource="test/mybatis/CafeCommentMapper.xml"/>
 	</mappers>	
 </configuration>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

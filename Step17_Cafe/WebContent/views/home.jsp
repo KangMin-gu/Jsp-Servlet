@@ -18,6 +18,7 @@
 	<li><a href="users/signup_form.do">회원가입</a></li>
 	<li><a href="users/login_form.do?url=${pageContext.request.contextPath }/">로그인</a></li>
 	<li><a href="cafe/list.do">카페 글 목록보기</a></li>
+	<li><a href="file/list.do">자료실 목록보기</a></li>
 </ul>
 <h3>공지사항</h3><!--  home action 에서 가져온 news를 포문으로 표현 -->
 <ul>

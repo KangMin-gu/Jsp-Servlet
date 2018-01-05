@@ -1,5 +1,7 @@
 package test.cafe.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -32,6 +34,26 @@ public class CafeCommentDao {
 		} finally {
 			session.close();
 		}
+	}
+	// ref_group 번호를 이용해서 덧글 목록을 리턴하는 메소드
+	public List<CafeCommentDto> getList(int ref_group){//@
+		SqlSession session= null;
+		List<CafeCommentDto> list=null; //★
+		try {
+			session=factory.openSession();
+			/*
+			 * Mapper namespace : cafeComment
+			 * sql id : getList 
+			 * parameterType : int (메소드의 파라미터타입 @)
+			 * resultType : CafeCommentDto (list의 타입 ★)
+			 */
+			list=session.selectList("cafeComment.getList", ref_group); //selectlist = List
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return list;
 	}
 
 	// 새 덧글의 글번호(sequence) 값을 얻어내서 리턴해주는 메소드

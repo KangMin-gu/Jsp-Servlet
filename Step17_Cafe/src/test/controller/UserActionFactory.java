@@ -9,6 +9,7 @@ import test.cafe.action.CafeInsertFormAction;
 import test.cafe.action.CafeListAction;
 import test.cafe.action.CafeUpdateAction;
 import test.cafe.action.CafeUpdateFormAction;
+import test.file.action.FileListAction;
 import test.users.action.LoginAction;
 import test.users.action.LoginFormAction;
 import test.users.action.LogoutAction;
@@ -68,7 +69,9 @@ public class UserActionFactory {
 			action=new CafeUpdateAction();
 		}else if(command.equals("/cafe/comment_insert")) {
 			action=new CafeCommentInsertAction();
-		}
+		}else if(command.equals("/file/list")) {
+			action=new FileListAction();
+		}	
 		return action;
 	}
 }
