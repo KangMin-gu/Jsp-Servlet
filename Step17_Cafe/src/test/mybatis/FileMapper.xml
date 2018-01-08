@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="file">
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM board_data
+		WHERE num=#{num}
+	</delete>
+
+	<select id="getData" parameterType="int" resultType="fileDto"> 
+	SELECT num, writer, title, orgFileName, saveFileName,fielSize,regdate
+	FROM board_data
+	where num=#{num}
+	</select>
+
 	<insert id="insert" parameterType="fileDto">
 		INSERT INTO board_data
 		(num,writer,title,orgFileName,saveFileName,fileSize,regdate)
@@ -14,6 +26,8 @@
 		FROM board_data
 		ORDER BY num DESC
 	</select>
+	
+	
 </mapper>
 
 

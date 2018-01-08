@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import test.cafe.dto.CafeDto;
+import test.file.dto.FileDto;
 import test.mybatis.SqlMapConfig;
 
 public class CafeDao {
@@ -19,6 +20,8 @@ public class CafeDao {
 		}
 		return dao;
 	}
+	
+
 	//전체 글의 갯수를 리턴하는 메소드
 	public int getCount(CafeDto dto) {
 		SqlSession session=null;
