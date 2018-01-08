@@ -13,9 +13,11 @@ import test.file.dto.FileDto;
 public class FileListAction extends Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		FileDto dto = new FileDto();
-		List<FileDto> list = FileDao.getInstance().getList(dto);
+		//파일 목록을 얻어온다.
+		List<FileDto> list = FileDao.getInstance().getList();
+		//request 에 담는다
 		request.setAttribute("list", list);
+		//view 페이지로 forward 이동해서 파일 목록 출력
 		return new ActionForward("/views/file/list.jsp");
 	}
 

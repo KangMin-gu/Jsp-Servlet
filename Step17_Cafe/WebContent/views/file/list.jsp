@@ -10,7 +10,10 @@
 </head>
 <body>
 <h3>파일 목록 입니다.</h3>
-<a href="fileinsertform.jsp">파일올리기</a>
+<a href="private/insertform.do">파일올리기</a>
+<!-- 로그인 되야지 올릴수있게 로그인필터동작하게만들어야함 "file/private/*" 로그인웹필터에추가
+버튼을 눌르면 file/private/insertform.do 요청이된다.
+ -->
 <table>
 	<thead>
 		<tr>

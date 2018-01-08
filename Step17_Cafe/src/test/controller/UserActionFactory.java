@@ -9,6 +9,8 @@ import test.cafe.action.CafeInsertFormAction;
 import test.cafe.action.CafeListAction;
 import test.cafe.action.CafeUpdateAction;
 import test.cafe.action.CafeUpdateFormAction;
+import test.file.action.FileInsertAction;
+import test.file.action.FileInsertFormAction;
 import test.file.action.FileListAction;
 import test.users.action.LoginAction;
 import test.users.action.LoginFormAction;
@@ -71,7 +73,11 @@ public class UserActionFactory {
 			action=new CafeCommentInsertAction();
 		}else if(command.equals("/file/list")) {
 			action=new FileListAction();
-		}	
+		}else if(command.equals("/file/private/insertform")) {
+			action=new FileInsertFormAction(); //리스트에서 업로드를 눌르면 여기로 이동
+		}else if(command.equals("/file/private/insert")) {
+			action=new FileInsertAction();
+		}
 		return action;
 	}
 }
